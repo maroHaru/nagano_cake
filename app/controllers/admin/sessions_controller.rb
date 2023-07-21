@@ -8,20 +8,12 @@ class Admin::SessionsController < Devise::SessionsController
   # def new
   #   super
   # end
-  def new
-    @admin = Admin.new
+  def after_sign_in_path_for(resource)
+    about_path
   end
 
-  def create
-    admin = Admin.new(configure_permitted_parameters)
-    admin.save
-    redirect_to '/'
-  end
-
-  def destroy
-    admin = Admin.find(params[:id])
-    admin.destroy
-    redirect_to '/'
+  def after_sign_out_path_for(resource)
+    about_path
   end
 
   # POST /resource/sign_in
