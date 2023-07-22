@@ -10,5 +10,8 @@ Rails.application.routes.draw do
 
   root to: "public/homes#top"
   get '/about', to: 'public/homes#about', as: 'about'
+
+  get '/customers/my_page', to: 'public/customers#show'
+  get '/customers/information/edit', to: 'public/customers#edit'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
