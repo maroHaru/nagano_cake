@@ -23,6 +23,9 @@
         <li>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
         </li>
+        <li>
+          <%= link_to "会員一覧", admin_customers_path %>
+        </li>
       <% else %>
         <li>
           <%= link_to "ログイン", new_admin_session_path %>
@@ -32,6 +35,9 @@
         </li>
         <li>
           <%= link_to "About", about_path %>
+        </li>
+        <li>
+          <%= link_to "顧客ログイン", new_customer_session_path %>
         </li>
       <% end %>
 
