@@ -16,5 +16,9 @@ Rails.application.routes.draw do
   patch '/customers/information', to: 'public/customers#update'
   get '/customers/unsubscribe', to: 'public/customers#unsubscribe'
   patch '/customers/withdraw', to: 'public/customers#withdraw'
+
+  namespace :admin do
+    resources :customers, only: [:index, :show, :edit, :update]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

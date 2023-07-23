@@ -1,0 +1,7 @@
+<h5>会員一覧</h5>
+<% @customers.each do |customer| %>
+  <h6>氏名</h6>
+  <%= customer.last_name %> <%= customer.first_name %>
+  <h6>ステータス</h6>
+  <%= customer.is_deleted %>
+<% end %>
