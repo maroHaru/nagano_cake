@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <h5 class="mb-3">商品新規登録</h5>
+    </div>
+  </div>
+
+　<%= form_with model: @item, url: '/admin/items', method: :post do |f| %>
+　<div class="row md">
+    <b class="col-md-3 text-right">商品画像</b>
+    <div class="col-md-4 text-right">
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+  </div>
+  <div class="row md-12">
+    <div class="col-mt- text-center">
+      <%= f.submit '新規登録', class: "btn btn-md btn-success" %>
+    </div>
+  </div>
+  <% end %>
+  </div>
+</div>
