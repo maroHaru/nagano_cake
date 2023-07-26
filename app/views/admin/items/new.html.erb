@@ -7,9 +7,41 @@
 
 　<%= form_with model: @item, url: '/admin/items', method: :post do |f| %>
 　<div class="row md">
-    <b class="col-md-3 text-right">商品画像</b>
+　  <div class="col-md-2"></div>
+    <b class="col-md-1 text-left">商品画像</b>
     <div class="col-md-4 text-right">
       <%= f.file_field :image, accept: "image/*" %>
+    </div>
+  </div>
+　<div class="row md">
+　  <div class="col-md-2"></div>
+    <b class="col-md-1 text-left">商品名</b>
+    <div class="col-md-4 text-center">
+      <label for="inputName" class="form-label"></label>
+      <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名" %>
+    </div>
+  </div>
+　<div class="row md">
+　  <div class="col-md-2"></div>
+    <b class="col-md-1 text-left">商品説明</b>
+    <div class="col-md-4 text-center">
+      <label for="inputIntroduction" class="form-label"></label>
+      <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"ここに説明分を記述します", size: "20x5" %>
+    </div>
+  </div>
+　<div class="row md">
+　  <div class="col-md-2"></div>
+    <b class="col-md-1 text-left">ジャンル</b>
+    <div class="col-md-4 text-center">
+      <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
+    </div>
+  </div>
+　<div class="row md">
+　  <div class="col-md-2"></div>
+    <b class="col-md-1 text-left">税抜価格</b>
+    <div class="col-md-4 text-center">
+      <label for="inputPrice" class="form-label"></label>
+      <%= f.number_field :price, autofocus: true, id:"inputPrice", placeholder:"1000" %>円
     </div>
   </div>
   <div class="row md-12">
