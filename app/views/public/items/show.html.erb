@@ -1,0 +1,20 @@
+<div class="container">
+  <h5 class="mb-3">商品</h5>
+  <div class="row">
+    <div class="col-lg-2">
+    <h6>ジャンル一覧</h6>
+    </div>
+   <div class="col-md-4">
+     <%= image_tag @item.get_image %>
+   </div>
+   <div class="col-md-4">
+     <b><%= @item.name %></b>
+   </div>
+   <div class="col-md-4">
+     <%= @item.introduction %>
+   </div>
+   <div class="col-md-4">
+     ¥<%= @item.price*1.10 %>
+   </div>
+  </div>
+</div>
