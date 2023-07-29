@@ -32,5 +32,9 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :items, only: [:index, :show]
   end
+
+  scope module: :public do
+    resources :addresses, except: [:new, :show]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
