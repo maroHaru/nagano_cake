@@ -1,7 +1,31 @@
-<h5>会員一覧</h5>
-<% @customers.each do |customer| %>
-  <h6>氏名</h6>
-  <%= customer.last_name %> <%= customer.first_name %>
-  <h6>ステータス</h6>
-  <%= customer.is_deleted %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <h5 class="mb-3">会員一覧</h5>
+    </div>
+  </div>
+  <div class="row">
+     <div class="col-md-8 offset-md-1">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+              <td><%= customer.email %></td>
+              <td><%= customer.is_deleted %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
