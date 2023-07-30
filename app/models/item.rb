@@ -7,4 +7,8 @@ class Item < ApplicationRecord
   def get_image
     image
   end
+
+  def with_tax_price
+    (price * 1.1).floor
+  end
 end

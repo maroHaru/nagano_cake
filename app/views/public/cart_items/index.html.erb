@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <h5 class="mb-3">ショッピングカート</h5>
+    </div>
+　　<div class="col-md-4 text-center">
+      <h5 class="mb-3">カート空ボタン</h5>
+    </div>
+  </div>
+
+
+  <div class="row mt-4">
+    <div class="col-md-8 offset-md-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.item.name %></td>
+              <td><%= cart_item.item.with_tax_price %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= cart_item.subtotal %></td>
+              <td></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
