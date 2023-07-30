@@ -36,5 +36,11 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :addresses, except: [:new, :show]
   end
+
+  scope module: :public do
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+  end
+  delete '/cart_items/destroy_all', to: 'public/cart_items#destroy_all'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
