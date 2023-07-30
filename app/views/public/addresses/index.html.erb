@@ -4,7 +4,7 @@
   </div>
   <div class="row mb-10">
     <div class="col-md-6 text-center">
-      <%= form_with model: @address do |f| %>
+      <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
       <table class="table">
         <tr>
           <th>郵便番号(ハイフンなし)</th>
@@ -28,23 +28,25 @@
   </div>
 
   <div class="row mb-4">
-    <div class="col-md-8 offset-md-1 mb-4">
+    <div class="col-md-9 offset-md-1 mt-5">
       <table class="table">
-        <!--<thead>-->
-        <!--  <tr>-->
-        <!--    <th>郵便番号</th>-->
-        <!--    <th>住所</th>-->
-        <!--    <th>宛名</th>-->
-        <!--    <th></th>-->
-        <!--  </tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
+        <thead>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
           <% @addresses.each do |address| %>
-            <!--<tr>-->
-            <%= address.postal_code %>
-            <%= address.address %>
-            <%= address.name %>
-            <!--</tr>-->
+            <tr>
+            <td><%= address.postal_code %></td>
+            <td><%= address.address %></td>
+            <td><%= address.name %></td>
+            <td><%= link_to "編集する", edit_address_path(address.customer.id), class: "btn btn-sm btn-success" %>
+                <%= link_to "削除する", address_path(address.customer.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>

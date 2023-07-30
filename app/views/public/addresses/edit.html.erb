@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row mb-5">
+    <b class="mb-3">配送先編集</b>
+  </div>
+  <div class="row mb-10">
+    <div class="col-md-6">
+      <%= form_with model: @address, url: address_path, method: :patch do |f| %>
+      <table class="table">
+        <tr>
+          <th>郵便番号(ハイフンなし)</th>
+          <td><label for="inputPostalCode" class="form-label"></label>
+              <%= f.text_field :postal_code, autofocus: true, id:"inputPostalCode", placeholder:"0000000" %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><label for="inputAddress" class="form-label"></label>
+              <%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"東京都渋谷区代々木神園町0-0" %></td>
+        </tr>
+        <tr>
+          <th>宛名</th>
+          <td><label for="inputAddressName" class="form-label"></label>
+              <%= f.text_field :name, autofocus: true, id:"inputAddressName", placeholder:"令和道子" %></td>
+        </tr>
+      </table>
+      <%= f.submit '変更内容を保存', class: "btn btn-md btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>
