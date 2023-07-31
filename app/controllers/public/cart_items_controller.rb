@@ -1,11 +1,16 @@
 class Public::CartItemsController < ApplicationController
+ before_action :destroy_all, only: [:destroy]
 
   def create
     @item = Item.find(cart_item_params[:item_id])
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    @cart_item.save
-    redirect_to cart_items_path
+    if @item = CartItem.find_by(item_id: params[:cart_item][:item_id])
+       @cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id]).amount += params[:cart_item][:amount].to_i
+       @cart_item.update(cart_item_params)
+    else  @cart_item.save
+      redirect_to cart_items_path
+    end
   end
 
   def index
