@@ -1,16 +1,25 @@
 class Public::CartItemsController < ApplicationController
- before_action :destroy_all, only: [:destroy]
 
   def create
-    @item = Item.find(cart_item_params[:item_id])
+    # @item = Item.find(cart_item_params[:item_id])
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    if @item = CartItem.find_by(item_id: params[:cart_item][:item_id])
-       @cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id]).amount += params[:cart_item][:amount].to_i
-       @cart_item.update(cart_item_params)
-    else  @cart_item.save
-      redirect_to cart_items_path
+    @item = CartItem.find_by(item_id: params[:cart_item][:item_id])
+    if @item.present?
+      new_amount = @item.amount + @cart_item.amount
+      # @cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id]).amount += params[:cart_item][:amount].to_i
+       @item.update_attribute(:amount, new_amount)
+    else
+      @cart_item.save
+
     end
+    redirect_to cart_items_path
+  end
+
+  def update
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+    redirect_to cart_items_path
   end
 
   def index
