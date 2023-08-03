@@ -43,6 +43,12 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :update, :destroy, :create]
   end
 
+  post '/orders/confirm', to: 'public/orders#confirm'
+  get '/orders/complete', to: 'public/orders#complete'
+
+  scope module: :public do
+    resources :orders, only: [:new, :create, :index, :show ]
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
