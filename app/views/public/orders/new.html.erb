@@ -19,6 +19,11 @@
   <div class="row mt-3">
     <div class="col-md-4">
       <b class="mb-3">お届け先</b>
+        <%= form_with model: @order do |f| %>
+          <%= f.radio_button :current_customer.customer_address_display, "ご自身のご住所" %>
+          <%= f.label :address_display, "ご自身のご住所" %></br>
+          <%= f.submit '確認画面へ進む', class: "btn btn-md btn-primary" %>
+        <% end %>
     </div>
   </div>
 
