@@ -2,9 +2,13 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @customer = current_customer
-    @customers = Customer.all
-    @addresses = Address.all
+    @order.customer_id = current_customer.id
+    # @order.customer_id = Address.find_by(customer_id: params[:address][:customer_id])
+
+
+    # @customer = current_customer
+    # @customers = Customer.all
+    # @addresses = Address.all
   end
 
   def create
@@ -12,6 +16,9 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.save
     redirect_to orders_confirm_path
+  end
+
+  def confirm
   end
 
   private
