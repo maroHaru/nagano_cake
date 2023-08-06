@@ -3,23 +3,44 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @order.customer_id = current_customer.id
-    # @order.customer_id = Address.find_by(customer_id: params[:address][:customer_id])
-
-
-    # @customer = current_customer
-    # @customers = Customer.all
-    # @addresses = Address.all
-  end
-
-  def create
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    @order.save
-    redirect_to orders_confirm_path
+    # @addresses = current_customer.addresses
   end
 
   def confirm
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.payment_method = params[:order][:payment_method]
+    if params[:order][:select_address] == "0"
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.full_name
+    elsif params[:order][:select_address] == "1"
+      current_customer.addresses = Address.find(params[:order][:address_id])
+      @order.postal_code = current_customer.addresses.postal_code
+      @order.address = current_customer.addresses.address
+      @order.name = current_customer.addresses.name
+    elsif params[:order][:select_address] == "2"
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
+    else
+      render 'new'
+    end
+
+
+    # @order = Order.find(params[:id])
+
   end
+
+  # def create
+  #   @order = Order.new(order_params)
+  #   @order.customer_id = current_customer.id
+  #   @order.save
+  #   redirect_to orders_confirm_path
+  # end
+
+  # def show
+  # end
 
   private
 
