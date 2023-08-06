@@ -27,6 +27,9 @@ class Public::OrdersController < ApplicationController
       render 'new'
     end
 
+    @cart_items = current_customer.cart_items.all
+    @total = 0
+
 
     # @order = Order.find(params[:id])
 
