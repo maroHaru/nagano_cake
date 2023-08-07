@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row mt-4">
-    <div class="col-md-8 offset-md-1">
+    <div class="col-md-6 offset-md-1">
       <table class="table">
         <thead>
           <tr>
@@ -20,24 +20,44 @@
             <tr>
               <td><%= cart_item.item.name %></td>
               <td><%= cart_item.item.with_tax_price %></td>
+              <td><%= cart_item.amount %></td>
               <td><%= cart_item.subtotal %></td>
-              <td><% @total += cart_item.subtotal %></td>
-            </tr>           
+            </tr>
+            <% @total += cart_item.subtotal %>
           <% end %>
         </tbody>
       </table>
     </div>
-  </div>  
+    <div class="col-md-3 offset-md-1">
+      <table class="table">
+        <tr>
+          <th>送料</th>
+          <td><%= @order.shipping_cost %></td>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <td><%= @total %></td>
+        </tr>
+          <th>請求金額</th>
+          <td><%= @order.shipping_cost + @total %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3 text-center">
       <b>支払方法</b>
+    </div>
+    <div class="col-md-7 text-left">
       <%= @order.payment_method_i18n %>
       </br>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3 text-center">
       <b>お届け先</b>
+    </div>
+    <div class="col-md-7 text-left">
       <%= @order.postal_code %>
       <%= @order.address %>
       <%= @order.name %>

@@ -28,6 +28,7 @@ class Public::OrdersController < ApplicationController
     end
 
     @cart_items = current_customer.cart_items.all
+    @order.shipping_cost = 800
     @total = 0
 
 
