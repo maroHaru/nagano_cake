@@ -44,12 +44,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @order_detail.each do |order_detail| %>
+          <% @order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td><%= order_detail.with_tax_price %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.subtotal %></td>
               <td></td>
             </tr>
           <% end %>
