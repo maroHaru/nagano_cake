@@ -56,5 +56,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
   end
 
+  namespace :admin do
+    resources :order_details, only: [:update]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
