@@ -10,4 +10,6 @@ class OrderDetail < ApplicationRecord
     with_tax_price * amount
   end
 
+  enum making_status: { impossible_manufacture: 0, wait_manufacture: 1, manufacturing: 2, finish: 3}
+
 end
