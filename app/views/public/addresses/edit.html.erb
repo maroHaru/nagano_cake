@@ -4,7 +4,7 @@
   </div>
   <div class="row mb-10">
     <div class="col-md-6">
-      <%= form_with model: address, url: address_path(address.id), method: :patch do |f| %>
+      <%= form_with model: @address, url: address_path(@address), method: :patch do |f| %>
       <table class="table">
         <tr>
           <th>郵便番号(ハイフンなし)</th>

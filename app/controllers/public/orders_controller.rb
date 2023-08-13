@@ -57,6 +57,7 @@ class Public::OrdersController < ApplicationController
   def index
     # @order = Order.find(params[:id])
     @orders = current_customer.orders
+    # @order_details = @order.order_details
     # @orders.customer_id = Customer.find(params[:id])
     # @orders = @order_detail.orders
     # @order = Order.all
@@ -64,7 +65,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_detail = OrderDetail.find(params[:id])
+    # @order_detail = OrderDetail.find(params[:id])
     @order_details = @order.order_details
     @total = 0
   end

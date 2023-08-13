@@ -4,6 +4,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     # @order_detail = OrderDetail.find(params[:id])
     @order_details = @order.order_details
+    @total = 0
     # @orders = Order.all
     # @order_detail = OrderDetail.all
   end

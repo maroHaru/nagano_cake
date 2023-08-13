@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mb-5">
-    <b class="mb-3">配送先一覧</b>
+    <b class="mb-3">配送先登録 / 一覧</b>
   </div>
   <div class="row mb-10">
     <div class="col-md-6 text-center">
@@ -44,7 +44,7 @@
             <td><%= address.postal_code %></td>
             <td><%= address.address %></td>
             <td><%= address.name %></td>
-            <td><%= link_to "編集する", edit_address_path(address.customer.id), class: "btn btn-sm btn-success" %>
+            <td><%= link_to "編集する", edit_address_path(address), class: "btn btn-sm btn-success" %>
                 <%= link_to "削除する", address_path(address.customer.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
             </tr>
           <% end %>
