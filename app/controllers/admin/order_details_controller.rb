@@ -2,8 +2,8 @@ class Admin::OrderDetailsController < ApplicationController
 
   def update
     @order_detail = OrderDetail.find(params[:id])
-    @order = Order.find(params[:id])
-    # @order = @order_detail.order
+    # @order = Order.find(params[:id])
+    @order = @order_detail.order
     @order_details = @order.order_details.all
     @order_detail.update(order_detail_params)
     if @order_details.each do |order_detail|

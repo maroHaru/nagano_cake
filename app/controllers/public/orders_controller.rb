@@ -56,7 +56,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     # @order = Order.find(params[:id])
-    @orders = Order.all
+    @orders = current_customer.orders
     # @orders.customer_id = Customer.find(params[:id])
     # @orders = @order_detail.orders
     # @order = Order.all
