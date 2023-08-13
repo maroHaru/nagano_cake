@@ -45,7 +45,7 @@ class Public::OrdersController < ApplicationController
         @order_detail.amount = cart_item.amount
         @order_detail.save
       end
-  
+
       CartItem.destroy_all
       redirect_to orders_complete_path
     end
@@ -53,15 +53,20 @@ class Public::OrdersController < ApplicationController
 
   def complete
   end
-  
+
   def index
+    # @order = Order.find(params[:id])
     @orders = Order.all
+    # @orders.customer_id = Customer.find(params[:id])
+    # @orders = @order_detail.orders
+    # @order = Order.all
   end
 
   def show
     @order = Order.find(params[:id])
     @order_detail = OrderDetail.find(params[:id])
     @order_details = @order.order_details
+    @total = 0
   end
 
   private
