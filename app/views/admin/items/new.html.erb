@@ -44,6 +44,14 @@
       <%= f.number_field :price, autofocus: true, id:"inputPrice", placeholder:"1000" %>円
     </div>
   </div>
+　<div class="row md">
+　  <div class="col-md-2"></div>
+    <b class="col-md-1 text-left">販売ステータス</b>
+    <div class="col-md-4 text-center">
+      <%= f.radio_button :is_active, :true %><%= f.label :is_active, "販売中", value: :true %>
+      <%= f.radio_button :is_active, :false %><%= f.label :is_active, "販売停止中", value: :false %>
+    </div>
+  </div>
   <div class="row md-12">
     <div class="col-mt- text-center">
       <%= f.submit '新規登録', class: "btn btn-md btn-success" %>

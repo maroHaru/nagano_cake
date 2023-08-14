@@ -46,6 +46,14 @@
           <td><label for="inputEmail" class="form-label"></label>
               <%= f.email_field :email, autofocus: true, id:"inputEmail", placeholder:"メールアドレス" %></td>
         </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td><%= f.radio_button :is_deleted, :false %>
+          　　<%= f.label :is_deleted, "有効", value: :false %>
+          　　<%= f.radio_button :is_deleted, :true %>
+          　　<%= f.label :is_deleted, "退会", value: :true %>
+          </td>
+        </tr>
         <% end %>
       </table>
     </div>

@@ -12,4 +12,13 @@ class Item < ApplicationRecord
   def with_tax_price
     (price * 1.1).floor
   end
+
+  def sales_status
+    if is_active == false
+      "販売中止中"
+    else
+      "販売中"
+    end
+  end
+
 end
