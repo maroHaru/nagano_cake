@@ -1,26 +1,21 @@
 <div class="container">
-  <h5 class="mb-3">商品</h5>
   <div class="row">
     <div class="col-lg-2">
     <h6>ジャンル一覧</h6>
     </div>
-   <div class="col-md-4">
+   <div class="col-lg-4">
      <%= image_tag @item.get_image %>
    </div>
-   <div class="col-md-4">
-     <b><%= @item.name %></b>
-   </div>
-   <div class="col-md-4">
-     <%= @item.introduction %>
-   </div>
-   <div class="col-md-4">
-     ¥<%= @item.price*1.10 %>
-   </div>
-   <div class="col-md-4">
-     <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-     　<%= f.hidden_field :item_id, :value => @item.id  %>
-       <%= f.select :amount, *[1..10] %>
-       <%= f.submit 'カートに入れる', class: "btn btn-md btn-success" %>
+   <div class="col-lg-6">
+     <b><%= @item.name %></b></br>
+     <%= @item.introduction %></br>
+     <b>¥<%= @item.with_tax_price %>(税込)</b></br>
+     <% if customer_signed_in? %>
+       <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+     　  <%= f.hidden_field :item_id, :value => @item.id  %>
+         <%= f.select :amount, *[1..10] %>
+         <%= f.submit 'カートに入れる', class: "btn btn-md btn-success" %>
+       <% end %>
      <% end %>
     </div>
   </div>
