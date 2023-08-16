@@ -3,39 +3,48 @@
     <h4>新規会員登録</h4>
   </div>
   <div class="row">
-    <div class="col-md-8 mx-auto">
+    <div class="col-md-8 mx-auto mt-4">
 
       <%= form_with model: @customer, url: customer_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <table class="table">
           <tr>
             <th>名前</th>
-            <td><%= f.label :name, '(姓)' %> <%= f.text_field :last_name %></td>
-            <td><%= f.label :name, '(名)' %> <%= f.text_field :first_name %></td>
+            <td><%= f.label :name, '(姓)' %></td>
+            <td><%= f.text_field :last_name %></td>
+            <td><%= f.label :name, '(名)' %></td>
+            <td><%= f.text_field :first_name %></td>
           </tr>
           <tr>
             <th>フリガナ</th>
-            <td><%= f.label :name, '(セイ)' %> <%= f.text_field :last_name_kana %></td>
-            <td><%= f.label :name, '(メイ)' %> <%= f.text_field :first_name_kana %></td>
+            <td><%= f.label :name, '(セイ)' %></td>
+            <td><%= f.text_field :last_name_kana %></td>
+            <td><%= f.label :name, '(メイ)' %></td>
+            <td><%= f.text_field :first_name_kana %></td>
           </tr>
           <tr>
             <th><%= f.label :email, 'メールアドレス' %></th>
+            <td></td>
             <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
           </tr>
           <tr>
             <th>郵便番号(ハイフンなし)></th>
+            <td></td>
             <td><%= f.text_field :postal_code %></td>
           </tr>
           <tr>
             <th>住所</th>
+            <td></td>
             <td><%= f.text_field :address %></td>
           </tr>
           <tr>
             <th>電話番号(ハイフンなし)</th>
+            <td></td>
             <td><%= f.telephone_field :telephone_number %></td>
           </tr>
           <tr>
             <th>パスワード(6文字以上)</th>
+            <td></td>
             <td>
               <%= f.label :password %>
               <% if @minimum_password_length %>
@@ -46,6 +55,7 @@
           </tr>
           <tr>
             <th>パスワード(確認用)</th>
+            <td></td>
             <td>
               <%= f.label :password_confirmation %><br />
               <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
