@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class="mb-3">商品一覧</h5>
+  <h5 class="mb-3">商品一覧（全<%= @items.count %>件）</h5>
   <div class="row">
     <% @items.each do |item| %>
       <div class="col-md-3">
