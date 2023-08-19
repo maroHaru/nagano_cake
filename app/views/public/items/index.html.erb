@@ -4,8 +4,8 @@
     <% @items.each do |item| %>
       <div class="col-md-3">
       　<%= link_to item_path(item.id) do %>
-      　  <%= image_tag item.get_image, size: "150x150" %>
-        <% end %>
+      　  <%= image_tag item.get_image, size: "160x160" %>
+        <% end %></br>
       <b>商品名</b>
       <%= item.name %></br>
       ¥<%= item.price %>

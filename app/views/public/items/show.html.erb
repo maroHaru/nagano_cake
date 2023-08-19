@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-2">
-    <h6>ジャンル一覧</h6>
     </div>
    <div class="col-lg-4">
-     <%= image_tag @item.get_image %>
+     <%= image_tag @item.get_image, size: "250x250" %>
    </div>
    <div class="col-lg-6">
      <b><%= @item.name %></b></br>
