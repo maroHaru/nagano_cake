@@ -46,9 +46,6 @@
             </li>
           <% else %>
             <li>
-              <%= link_to "ログイン", new_admin_session_path, class: "btn btn-light border" %>
-            </li>
-            <li>
               <%= link_to "About", about_path, class: "btn btn-light border" %>
             </li>
             <li>
@@ -58,7 +55,7 @@
               <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-light border" %>
             </li>
             <li>
-              <%= link_to "顧客ログイン", new_customer_session_path, class: "btn btn-light border" %>
+              <%= link_to "ログイン", new_customer_session_path, class: "btn btn-light border" %>
             </li>
           <% end %>
         </div>

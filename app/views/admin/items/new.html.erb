@@ -1,62 +1,59 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 text-center">
+    <div class="col-md-7 text-center">
       <h5 class="mb-3">商品新規登録</h5>
     </div>
   </div>
-
-　<%= form_with model: @item, url: '/admin/items', method: :post do |f| %>
-　<div class="row md">
-　  <div class="col-md-2"></div>
-    <b class="col-md-1 text-left">商品画像</b>
-    <div class="col-md-4 text-right">
-      <%= f.file_field :image, accept: "image/*" %>
+  <div class="row">
+    <div class="col-md-3">
     </div>
-  </div>
-　<div class="row md">
-　  <div class="col-md-2"></div>
-    <b class="col-md-1 text-left">商品名</b>
-    <div class="col-md-4 text-center">
-      <label for="inputName" class="form-label"></label>
-      <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名" %>
+    <div class="col-md-5">
+    　<%= form_with model: @item, url: '/admin/items', method: :post do |f| %>
+        <table>
+          <tr>
+            <th>商品画</th>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <th>商品名</th>
+            <td>
+              <label for="inputName" class="form-label"></label>
+              <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名" %>
+            </td>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <td>
+              <label for="inputIntroduction" class="form-label"></label>
+              <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"ここに説明分を記述します", size: "20x5" %>
+            </td>
+          </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></td>
+          </tr>
+          <tr>
+            <th>税抜価格</th>
+            <td>
+              <label for="inputPrice" class="form-label"></label>
+              <%= f.number_field :price, autofocus: true, id:"inputPrice", placeholder:"1000" %>円
+            </td>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <td>
+              <%= f.radio_button :is_active, :true %><%= f.label :is_active, "販売中", value: :true %>
+              <%= f.radio_button :is_active, :false %><%= f.label :is_active, "販売停止中", value: :false %>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= f.submit '新規登録', class: "btn btn-md btn-success" %></td>
+          </tr>
+        </table>
+      <% end %>
     </div>
-  </div>
-　<div class="row md">
-　  <div class="col-md-2"></div>
-    <b class="col-md-1 text-left">商品説明</b>
-    <div class="col-md-4 text-center">
-      <label for="inputIntroduction" class="form-label"></label>
-      <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"ここに説明分を記述します", size: "20x5" %>
+    <div class="col-md-3">
     </div>
-  </div>
-　<div class="row md">
-　  <div class="col-md-2"></div>
-    <b class="col-md-1 text-left">ジャンル</b>
-    <div class="col-md-4 text-center">
-      <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
-    </div>
-  </div>
-　<div class="row md">
-　  <div class="col-md-2"></div>
-    <b class="col-md-1 text-left">税抜価格</b>
-    <div class="col-md-4 text-center">
-      <label for="inputPrice" class="form-label"></label>
-      <%= f.number_field :price, autofocus: true, id:"inputPrice", placeholder:"1000" %>円
-    </div>
-  </div>
-　<div class="row md">
-　  <div class="col-md-2"></div>
-    <b class="col-md-1 text-left">販売ステータス</b>
-    <div class="col-md-4 text-center">
-      <%= f.radio_button :is_active, :true %><%= f.label :is_active, "販売中", value: :true %>
-      <%= f.radio_button :is_active, :false %><%= f.label :is_active, "販売停止中", value: :false %>
-    </div>
-  </div>
-  <div class="row md-12">
-    <div class="col-mt- text-center">
-      <%= f.submit '新規登録', class: "btn btn-md btn-success" %>
-    </div>
-  </div>
-  <% end %>
   </div>
 </div>
