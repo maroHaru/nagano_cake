@@ -14,7 +14,7 @@ class Public::CartItemsController < ApplicationController
 
     end
     redirect_to cart_items_path
- 
+
   end
 
   def update
@@ -24,7 +24,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
     @total = 0
     @cart_item = CartItem.new
   end
