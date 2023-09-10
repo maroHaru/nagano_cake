@@ -28,6 +28,9 @@
             <li>
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-light border" %>
             </li>
+            <li>
+              <%= link_to "ゲストログアウト", customers_guest_sign_out_path, method: :delete, class: "btn btn-light border" %>
+            </li>
           <% elsif admin_signed_in? %>
             <li>
               <%= link_to "商品一覧", admin_items_path, class: "btn btn-light border" %>
@@ -56,6 +59,9 @@
             </li>
             <li>
               <%= link_to "ログイン", new_customer_session_path, class: "btn btn-light border" %>
+            </li>
+            <li>
+              <%= link_to "ゲストログイン", customers_guest_sign_in_path, method: :post,  class: "btn btn-light border" %>
             </li>
           <% end %>
         </div>

@@ -8,6 +8,15 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
+  devise_scope :customer do
+    delete 'customers/guest_sign_out', to: 'public/sessions#guest_sign_out'
+  end
+
+
   root to: "public/homes#top"
   get '/about', to: 'public/homes#about', as: 'about'
 
